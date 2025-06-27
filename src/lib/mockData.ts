@@ -1,4 +1,11 @@
-import { Feature, Product, Tag, Status, Priority } from "@/types/product";
+import {
+  Feature,
+  Product,
+  Tag,
+  Status,
+  Priority,
+  ActivityLog,
+} from "@/types/product";
 
 export const mockTags: Tag[] = [
   { id: "1", name: "Frontend", color: "#8B5CF6" },
@@ -61,13 +68,59 @@ export const mockFeatures: Feature[] = [
   },
 ];
 
-export const mockProduct: Product = {
-  id: "1",
-  name: "Главный продукт",
-  description: "Основной продукт компании",
-  features: mockFeatures,
-  createdAt: new Date("2024-01-01"),
-};
+export const mockProducts: Product[] = [
+  {
+    id: "1",
+    name: "Мобильное приложение",
+    description: "iOS и Android приложение для управления задачами",
+    icon: "📱",
+    features: mockFeatures.slice(0, 3),
+    createdAt: new Date("2024-01-01"),
+  },
+  {
+    id: "2",
+    name: "Веб-сайт",
+    description: "Корпоративный сайт с CRM интеграцией",
+    icon: "🌐",
+    features: mockFeatures.slice(3, 5),
+    createdAt: new Date("2024-01-15"),
+  },
+  {
+    id: "3",
+    name: "API Платформа",
+    description: "REST API для внешних интеграций",
+    icon: "⚡",
+    features: [],
+    createdAt: new Date("2024-02-01"),
+  },
+];
+
+export const mockActivityLogs: ActivityLog[] = [
+  {
+    id: "1",
+    featureId: "1",
+    action: "Статус изменён на 'В разработке'",
+    author: "Алексей Иванов",
+    timestamp: new Date("2024-01-20"),
+    details: "Перенесено из анализа в разработку",
+  },
+  {
+    id: "2",
+    featureId: "2",
+    action: "Фича создана",
+    author: "Мария Петрова",
+    timestamp: new Date("2024-01-10"),
+  },
+  {
+    id: "3",
+    featureId: "1",
+    action: "Обновлены критерии приёма",
+    author: "Алексей Иванов",
+    timestamp: new Date("2024-01-18"),
+  },
+];
+
+export const mockProduct: Product = mockProducts[0];
 
 export const statusConfig = {
   idea: { title: "Идея", color: "#6B7280" },
