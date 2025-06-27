@@ -1,4 +1,4 @@
-import { KanbanColumn as KanbanColumnType } from "@/types/product";
+import { KanbanColumnType } from "@/types/product";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import FeatureCard from "./FeatureCard";

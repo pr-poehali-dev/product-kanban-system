@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Feature, Status, KanbanColumn } from "@/types/product";
+import { Feature, Status, KanbanColumnType } from "@/types/product";
 import { mockFeatures, statusConfig } from "@/lib/mockData";
 import KanbanColumn from "./KanbanColumn";
 import CreateFeatureDialog from "./CreateFeatureDialog";
@@ -7,7 +7,7 @@ import CreateFeatureDialog from "./CreateFeatureDialog";
 const ProductBoard = () => {
   const [features, setFeatures] = useState<Feature[]>(mockFeatures);
 
-  const columns: KanbanColumn[] = Object.entries(statusConfig).map(
+  const columns: KanbanColumnType[] = Object.entries(statusConfig).map(
     ([status, config]) => ({
       id: status as Status,
       title: config.title,

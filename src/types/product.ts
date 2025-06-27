@@ -32,7 +32,7 @@ export interface Tag {
   color: string;
 }
 
-export interface KanbanColumn {
+export interface KanbanColumnType {
   id: Status;
   title: string;
   features: Feature[];
