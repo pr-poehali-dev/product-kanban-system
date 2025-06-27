@@ -15,63 +15,69 @@ const FeatureCard = ({ feature, onEdit, onDelete }: FeatureCardProps) => {
   const priorityColor = priorityConfig[feature.priority].color;
 
   return (
-    <Card className="mb-3 hover:shadow-md transition-shadow cursor-pointer group">
-      <CardHeader className="pb-2">
-        <div className="flex items-start justify-between">
-          <h3 className="font-medium text-sm leading-tight">{feature.title}</h3>
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity flex gap-1">
+    <div className="backdrop-blur-sm bg-white/40 rounded-xl border border-white/50 shadow-lg hover:shadow-xl hover:bg-white/50 transition-all duration-300 cursor-pointer group hover:scale-[1.02] hover:-translate-y-1">
+      <div className="p-4">
+        <div className="flex items-start justify-between mb-3">
+          <h3 className="font-semibold text-slate-800 leading-tight flex-1 pr-2">
+            {feature.title}
+          </h3>
+          <div className="opacity-0 group-hover:opacity-100 transition-all duration-200 flex gap-1">
             <Button
               variant="ghost"
               size="sm"
-              className="h-6 w-6 p-0"
+              className="h-7 w-7 p-0 hover:bg-white/60 rounded-lg"
               onClick={(e) => {
                 e.stopPropagation();
                 onEdit?.(feature);
               }}
             >
-              <Icon name="Edit2" size={12} />
+              <Icon name="Edit2" size={14} className="text-indigo-600" />
             </Button>
             <Button
               variant="ghost"
               size="sm"
-              className="h-6 w-6 p-0 text-red-500 hover:text-red-700"
+              className="h-7 w-7 p-0 hover:bg-red-50 rounded-lg"
               onClick={(e) => {
                 e.stopPropagation();
                 onDelete?.(feature.id);
               }}
             >
-              <Icon name="Trash2" size={12} />
+              <Icon name="Trash2" size={14} className="text-red-500" />
             </Button>
           </div>
         </div>
-      </CardHeader>
-      <CardContent className="pt-0">
-        <p className="text-xs text-gray-600 mb-3 line-clamp-2">
+
+        <p className="text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed">
           {feature.description}
         </p>
 
         <div className="flex items-center justify-between">
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-1.5">
             {feature.tags.map((tag) => (
-              <Badge
+              <span
                 key={tag.id}
-                variant="secondary"
-                className="text-xs px-2 py-0 h-5"
-                style={{ backgroundColor: `${tag.color}20`, color: tag.color }}
+                className="text-xs px-2.5 py-1 rounded-full font-medium backdrop-blur-sm border border-white/30"
+                style={{
+                  background: `linear-gradient(135deg, ${tag.color}20, ${tag.color}10)`,
+                  color: tag.color,
+                  borderColor: `${tag.color}30`,
+                }}
               >
                 {tag.name}
-              </Badge>
+              </span>
             ))}
           </div>
 
           <div
-            className="w-2 h-2 rounded-full"
-            style={{ backgroundColor: priorityColor }}
+            className="w-3 h-3 rounded-full shadow-lg ring-2 ring-white/50"
+            style={{
+              background: `linear-gradient(135deg, ${priorityColor}, ${priorityColor}80)`,
+            }}
             title={priorityConfig[feature.priority].title}
           />
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 

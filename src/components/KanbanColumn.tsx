@@ -19,24 +19,24 @@ const KanbanColumn = ({
 
   return (
     <div className="flex-1 min-w-80">
-      <Card className="h-full">
-        <CardHeader className="pb-3">
+      <div className="backdrop-blur-md bg-white/30 rounded-2xl border border-white/40 shadow-2xl hover:shadow-3xl transition-all duration-300 h-full">
+        <div className="p-5 border-b border-white/20">
           <div className="flex items-center justify-between">
-            <h2 className="font-semibold text-base">{column.title}</h2>
-            <Badge
-              variant="secondary"
-              className="px-2 py-1 text-xs"
+            <h2 className="font-bold text-lg text-slate-800">{column.title}</h2>
+            <div
+              className="px-3 py-1.5 rounded-full text-sm font-semibold backdrop-blur-sm border border-white/30 shadow-lg"
               style={{
-                backgroundColor: `${statusColor}20`,
+                background: `linear-gradient(135deg, ${statusColor}20, ${statusColor}10)`,
                 color: statusColor,
+                borderColor: `${statusColor}30`,
               }}
             >
               {column.features.length}
-            </Badge>
+            </div>
           </div>
-        </CardHeader>
-        <CardContent className="pt-0">
-          <div className="space-y-0">
+        </div>
+        <div className="p-4">
+          <div className="space-y-3">
             {column.features.map((feature) => (
               <FeatureCard
                 key={feature.id}
@@ -46,13 +46,16 @@ const KanbanColumn = ({
               />
             ))}
             {column.features.length === 0 && (
-              <div className="text-center py-8 text-gray-400 text-sm">
-                Пока пусто
+              <div className="text-center py-12">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-slate-200 to-slate-300 flex items-center justify-center">
+                  <span className="text-2xl">💭</span>
+                </div>
+                <p className="text-slate-500 font-medium">Пока пусто</p>
               </div>
             )}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };
